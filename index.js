@@ -1,29 +1,17 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const path = require('path');
 
-// Transparent pixel (1x1 GIF)
-const pixel = Buffer.from(
-  "R0lGODlhAQABAPAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", 
-  "base64"
-);
+
+const imagePath = path.join(__dirname, 'public', 'icon.png');
+
 
 app.get('/pixel', (req, res) => {
-  const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  const userAgent = req.headers['user-agent'];
-  const referer = req.headers['referer'];
-
-  console.log({
-    timestamp: new Date().toISOString(),
-    ip: clientIP,
-    userAgent,
-    referer,
-  });
-
-  res.setHeader('Content-Type', 'image/gif');
-  res.send(pixel);
+    res.sendFile(imagePath); 
 });
 
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
