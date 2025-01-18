@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: pixel-tracker
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"

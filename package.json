@@ -1,0 +1,15 @@
+{
+  "name": "pixel-tracker",
+  "version": "1.0.0",
+  "description": "A simple server to log request details and return a transparent pixel.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
