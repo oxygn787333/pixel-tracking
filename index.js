@@ -8,6 +8,20 @@ const imagePath = path.join(__dirname, 'public', 'icon.png');
 
 app.get('/pixel', (req, res) => {
     res.sendFile(imagePath); 
+
+const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+const userAgent = req.headers['user-agent'];
+const referer = req.headers['referer'];
+const imagePath = path.join(__dirname, 'public', 'icon.png');
+
+  console.log({
+    timestamp: new Date().toISOString(),
+    ip: clientIP,
+    userAgent,
+    referer,
+  });
+
+    
 });
 
 
